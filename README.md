@@ -1,17 +1,54 @@
 # autter-demo-ai-agent
 
-A TypeScript support-agent app with a mock LLM, tool registry, docs search, account lookup, support tickets, and conversation memory.
+A realistic broken TypeScript support-agent app for testing [Autter](https://autter.dev) code review workflows in AI-heavy codebases.
 
-This is an **Autter Sandbox** repository. It intentionally contains realistic bugs and risky implementation patterns so design partners can test AI-editor workflows and Autter review quality.
+This repository is part of the Autter Sandbox set. It models a customer-support agent with a mock LLM provider, tool registry, document search, account lookup, support ticket creation, conversation memory, and summarization. The code intentionally includes prompt injection, tool authorization, memory isolation, argument validation, logging, and idempotency issues.
 
-## How to use this with Autter
+## What this agent includes
 
-1. Pick a challenge
-2. Paste the suggested prompt into your AI code editor
-3. Make the fix
-4. Open a PR
-5. Let Autter review it
-6. Fix what Autter catches
+- TypeScript and Node.js
+- Simple agent loop
+- Mock LLM-style control flow
+- Tool registry with permission checks
+- Account and support-ticket tools
+- Conversation memory and summarization
+- Vitest tests with expected-failure markers
+- Challenge files with copy-paste AI editor prompts
+- GitHub issue templates copied from the challenge files
+
+## Quick start
+
+```bash
+git clone https://github.com/Autter-dev/autter-demo-ai-agent.git
+cd autter-demo-ai-agent
+npm install
+npm test
+npm run build
+npm run dev
+```
+
+The app runs a local support-agent example from `src/index.ts`.
+
+## Demo flow with Autter
+
+1. Fork this repository or create a working branch.
+2. Go to [autter.dev](https://autter.dev) and sign in.
+3. Connect GitHub to Autter if it is not connected already.
+4. Add this repository to the Autter installation or select it from the Autter dashboard.
+5. Pick one challenge from the table below.
+6. Open the matching file in `/challenges`.
+7. Copy the "Suggested AI Editor Prompt" into Cursor, Claude Code, Copilot, Windsurf, or another AI code editor.
+8. Let the editor implement a small fix and add or update tests.
+9. Push the branch and open a pull request.
+10. Let Autter review the PR, then address the findings it raises.
+
+Good first demos are "Tool permission bypass" and "Prompt injection through retrieved docs" because they show Autter reviewing AI-agent risk that can be easy to miss in ordinary unit tests.
+
+## How the sandbox is designed
+
+This repo is intentionally imperfect. Do not fix every issue on `main`. Each challenge is meant to create one focused PR.
+
+Some tests use expected-failure markers. They document known broken behavior while keeping the baseline suite runnable for demo setup. When solving a challenge, convert or replace the relevant expected-failure coverage with passing regression tests.
 
 ## Challenges
 
@@ -26,6 +63,24 @@ This is an **Autter Sandbox** repository. It intentionally contains realistic bu
 | [Unsafe fallback tool execution](./challenges/unsafe-fallback-tool-execution.md) | High | Security | dangerous fallback behavior |
 | [Conversation summarizer drops safety constraints](./challenges/conversation-summarizer-drops-safety-constraints.md) | Medium | AI safety | behavior regression risk |
 
-## Local development
+## Recommended PR description
 
-Install dependencies, run the test suite, then pick a challenge. Some tests intentionally document broken behavior with expected-failure markers; they are part of the sandbox design.
+```markdown
+## What changed
+- Fixed the selected challenge
+- Added or updated regression coverage
+
+## Why
+- The previous implementation allowed the broken behavior described in `/challenges/...`
+
+## Validation
+- npm test
+- npm run build
+
+## Risks
+- Note any behavior that Autter should review carefully
+```
+
+## Learn more
+
+Visit [autter.dev](https://autter.dev) to learn more about Autter and connect this repository as a review demo.
