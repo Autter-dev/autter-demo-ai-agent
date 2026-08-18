@@ -52,32 +52,36 @@ Some tests use expected-failure markers. They document known broken behavior whi
 
 ## Challenges
 
-| Challenge | Difficulty | Category | Expected Autter review angle |
-| --- | --- | --- | --- |
-| [Tool permission bypass](./challenges/tool-permission-bypass.md) | High | Authorization | authorization issue in tool execution |
-| [Prompt injection through retrieved docs](./challenges/prompt-injection-through-retrieved-docs.md) | High | AI safety | prompt injection and unsafe context handling |
-| [Memory leaks private user data](./challenges/memory-leaks-private-user-data.md) | High | Privacy | tenant and user isolation bug |
-| [Tool arguments are not validated](./challenges/tool-arguments-are-not-validated.md) | Medium | Validation | missing schema validation |
-| [Agent logs sensitive data](./challenges/agent-logs-sensitive-data.md) | Medium | Security | sensitive data exposure |
-| [Ticket creation can be triggered repeatedly](./challenges/ticket-creation-can-be-triggered-repeatedly.md) | Medium | Reliability | idempotency issue |
-| [Unsafe fallback tool execution](./challenges/unsafe-fallback-tool-execution.md) | High | Security | dangerous fallback behavior |
-| [Conversation summarizer drops safety constraints](./challenges/conversation-summarizer-drops-safety-constraints.md) | Medium | AI safety | behavior regression risk |
+| Challenge                                                                                                            | Difficulty | Category      | Expected Autter review angle                 |
+| -------------------------------------------------------------------------------------------------------------------- | ---------- | ------------- | -------------------------------------------- |
+| [Tool permission bypass](./challenges/tool-permission-bypass.md)                                                     | High       | Authorization | authorization issue in tool execution        |
+| [Prompt injection through retrieved docs](./challenges/prompt-injection-through-retrieved-docs.md)                   | High       | AI safety     | prompt injection and unsafe context handling |
+| [Memory leaks private user data](./challenges/memory-leaks-private-user-data.md)                                     | High       | Privacy       | tenant and user isolation bug                |
+| [Tool arguments are not validated](./challenges/tool-arguments-are-not-validated.md)                                 | Medium     | Validation    | missing schema validation                    |
+| [Agent logs sensitive data](./challenges/agent-logs-sensitive-data.md)                                               | Medium     | Security      | sensitive data exposure                      |
+| [Ticket creation can be triggered repeatedly](./challenges/ticket-creation-can-be-triggered-repeatedly.md)           | Medium     | Reliability   | idempotency issue                            |
+| [Unsafe fallback tool execution](./challenges/unsafe-fallback-tool-execution.md)                                     | High       | Security      | dangerous fallback behavior                  |
+| [Conversation summarizer drops safety constraints](./challenges/conversation-summarizer-drops-safety-constraints.md) | Medium     | AI safety     | behavior regression risk                     |
 
 ## Recommended PR description
 
 ```markdown
 ## What changed
+
 - Fixed the selected challenge
 - Added or updated regression coverage
 
 ## Why
+
 - The previous implementation allowed the broken behavior described in `/challenges/...`
 
 ## Validation
+
 - npm test
 - npm run build
 
 ## Risks
+
 - Note any behavior that Autter should review carefully
 ```
 
